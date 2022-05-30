@@ -1,7 +1,22 @@
 import './App.css';
-import React  from 'react'
-import { UserOutlined, capacityField, LockOutlined, NumberOutlined,UploadOutlined } from '@ant-design/icons';
+import React from 'react'
+import 'antd/dist/antd.css';
+
+import { Select } from 'antd';
+
+
+
+
+import { UserOutlined, capacityField, LockOutlined, NumberOutlined, UploadOutlined } from '@ant-design/icons';
 import { Input, Button, message, Upload, Checkbox } from 'antd';
+
+
+const { Option } = Select;
+const handleChange = (value) => {
+  console.log(`selected ${value}`);
+};
+
+
 const props = {
   name: 'file',
   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -28,63 +43,96 @@ const onChange = (e) => {
 
 function App() {
   return (
-<div className='main'>
-  <div className='form'>
-    <formTitle>
-      <titleLabel>
-        Create Table:
-      </titleLabel>
-    </formTitle>
-    <hr/>
-    <formContent>
-      
-      <layout>
-        <layoutLabel>Layout:</layoutLabel>
-        <layoutField>
-        <Input size="large" placeholder="  Select Layout"  />
-        </layoutField>
-      </layout>
-      
-      <name>
-        <nameLabel>
-          Name:
-        </nameLabel>
-        <nameField>
-        <Input size="large" placeholder="  Enter Name" />
-        </nameField>
-      </name>
-      
-      <capacity>
-        <capacityLabel>
-          Capacity:
-        </capacityLabel>
-        <capacityField>
-        <Input size="large" placeholder="  Enter number of capacity"  />
-        </capacityField>
-      </capacity>
+    <div className='main'>
+      <div className='form'>
+        <formTitle>
+          <titleLabel>
+            Create Table:
+          </titleLabel>
+        </formTitle>
+        <hr />
+        <formContent>
 
-      <status>
-        <statusLabel>
-          Status:
-        </statusLabel>
-        <statusField>
-        <Checkbox onChange={onChange}/>
-        </statusField>
-      </status>
+          <layout>
+            <layoutLabel>Layout:</layoutLabel>
+            <layoutField>
 
-      <image>
-        <imageLabel>
-          Image:
-        </imageLabel>
-        <imageField>
-        <Upload {...props}>
-         <Button icon={<UploadOutlined />}>Click to Upload</Button>
-         </Upload>
-        </imageField>
-      </image>
-    </formContent>
-  </div>
-</div>
+              <abc>
+                <Select
+                  defaultValue="lucy"
+                  style={{
+                    width: 120,
+                  }}
+                  onChange={handleChange}
+                >
+                  <Option value="jack">Jack</Option>
+                  <Option value="lucy">Lucy</Option>
+                  <Option value="disabled" disabled>
+                    Disabled
+                  </Option>
+                  <Option value="Yiminghe">yiminghe</Option>
+                </Select>
+
+              </abc>
+            </layoutField>
+          </layout>
+
+          <name>
+            <nameLabel>
+              Name:
+            </nameLabel>
+            <nameField>
+              <field>
+                <Input size="large" placeholder="  Enter number of capacity" />
+              </field>
+
+            </nameField>
+          </name>
+
+          <capacity>
+            <capacityLabel>
+              Capacity:
+            </capacityLabel>
+
+            <capacityField>
+              <field>
+                <Input size="large" placeholder="  Enter number of capacity" />
+              </field>
+
+            </capacityField>
+          </capacity>
+
+          <status>
+            <statusLabel>
+              Status:
+            </statusLabel>
+
+            <statusField>
+              <Checkbox onChange={onChange} />
+            </statusField>
+
+          </status>
+
+          <image>
+            <imageLabel>
+              Image:
+            </imageLabel>
+            <imageField>
+              <Upload {...props}>
+                <Button icon={<UploadOutlined />}>Click to Upload</Button>
+              </Upload>
+            </imageField>
+          </image>
+        </formContent>
+        <btns>
+        <Button type="primary"
+        className='buttonCreateTable' id = "btn2"
+        >
+          Create Table</Button>
+        <Button type="primary" danger id="btn3">Cancel</Button>
+        </btns>
+      </div>
+    </div>
   );
 }
 export default App;
